@@ -1,1 +1,1 @@
-from resnext101 import ResNeXt101
+from resnext.resnext101 import ResNeXt101

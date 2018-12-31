@@ -38,7 +38,7 @@ to_test = {'ecssd': ecssd_path, 'hkuis': hkuis_path, 'pascal': pascals_path, 'so
 def main():
     net = R3Net().cuda()
 
-    print 'load snapshot \'%s\' for testing' % args['snapshot']
+    print ('load snapshot \'%s\' for testing') % args['snapshot']
     net.load_state_dict(torch.load(os.path.join(ckpt_path, exp_name, args['snapshot'] + '.pth')))
     net.eval()
 
@@ -56,7 +56,7 @@ def main():
 
             img_list = [os.path.splitext(f)[0] for f in os.listdir(root) if f.endswith('.jpg')]
             for idx, img_name in enumerate(img_list):
-                print 'predicting for %s: %d / %d' % (name, idx + 1, len(img_list))
+                print ('predicting for %s: %d / %d') % (name, idx + 1, len(img_list))
 
                 img = Image.open(os.path.join(root, img_name + '.jpg')).convert('RGB')
                 img_var = Variable(img_transform(img).unsqueeze(0), volatile=True).cuda()
@@ -83,8 +83,8 @@ def main():
 
             results[name] = {'fmeasure': fmeasure, 'mae': mae_record.avg}
 
-    print 'test results:'
-    print results
+    print ('test results:')
+    print (results)
 
 
 if __name__ == '__main__':
